@@ -1,0 +1,11 @@
+/var/backups/db.sql.gz {
+daily
+rotate 28
+nocompress
+create 640 root adm
+postrotate
+SCIFLO_DIR=<%= @sciflo_dir %>
+mysqldump -u <%= @mysql_user %> -p<%= @mysql_password %> --all-databases > /var/backups/db.sql --single-transaction
+gzip -9f /var/backups/db.sql
+endscript
+}

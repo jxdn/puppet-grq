@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source $HOME/sciflo/bin/activate
+
+# start GRQ SOAP server
+stopExposer.sh
+
+# stop supervisord
+kill -TERM `cat ~/sciflo/run/supervisord.pid`

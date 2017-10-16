@@ -1,0 +1,331 @@
+commit 43100a6976824c09d181b697b4af2efd072e7822
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 6 15:22:58 2017 +0000
+
+    tune elasticsearch config for high number of searches during death valley
+
+commit 4fd0801dbcf0010831a63119713fad5c773d73b8
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Jul 13 03:35:38 2017 +0000
+
+    install third_party celery
+
+commit 5559e9e0f3f7689bd01ee9c936a5945170b2859b
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Mar 17 01:37:43 2017 +0000
+
+    fix version conflicts
+
+commit 144d3b5a642ca92ed98e024177b0b52a62b02963
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 11 19:20:48 2017 +0000
+
+    install hysds_commons
+
+commit 5d0322e2ab1fc6d8b508a7b430fe44e21366dad2
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 10 17:30:31 2017 +0000
+
+    process dependency links for tosca
+
+commit 27ced1b3097d23751ea86909e859053bcc70cc78
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 10 16:16:48 2017 +0000
+
+    update to latest pip and setuptools to process dependency links
+
+commit b147266d220e4f993c03b677d803ece2a978683b
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Nov 2 04:12:32 2016 +0000
+
+    increase file descriptor limit for ops user
+    
+    Allows grq2 web app to scale up to high number of concurrent connections.
+
+commit 0ceb94b8a7e752bbad383da931261405127e080d
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 13 14:18:31 2016 +0000
+
+    allow aggregations to execute scripts
+
+commit 1a86b4d6137516185b88ff094f06bd409ca896ab
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 27 15:15:38 2016 +0000
+
+    remove group write perm
+
+commit 9b6240ac6a98c597f6dfcb3be1edc21ba8ec96e0
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Jan 27 15:07:50 2016 +0000
+
+    require user
+
+commit 3e66b7520e64514daafa086275ded89872cef70f
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jan 26 20:27:15 2016 +0000
+
+    run tosca behind apache proxy
+
+commit 641bda7b869ae56d0d8598baf0a3d3674ccbdfea
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Sat Nov 7 01:16:56 2015 +0000
+
+    install elasticsearch data prepopulated with geonames db for reverse geolocation
+
+commit 5239255c7a44c663b8ab30f7406ef229739e049f
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 20:24:36 2015 +0000
+
+    remove credential copying from centos user
+
+commit 42c9e2e50214a0a42c3af8adaf65d2b4762f62d4
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 18:35:37 2015 +0000
+
+    revert back to ES 1.x until there's more support for ES 2.0
+
+commit dea8cd8079b9baac764d8cbe9d817d130d357577
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 16:25:46 2015 +0000
+
+    unify name for hysds install script
+
+commit a011909eb5736c0ff8523ec9a3b9f43d7544ab00
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Nov 6 16:17:43 2015 +0000
+
+    change to install_grq.sh
+
+commit 2945326880e2c928a804da40f6876b6527233859
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Nov 5 21:34:52 2015 +0000
+
+    rename
+
+commit c7b24dd4e120088ca4367ef501cee95f22ef9765
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Nov 5 21:30:41 2015 +0000
+
+    update elasticsearch
+
+commit 0c6bc8c86c622761693763a74d1513ba1b762af7
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Nov 5 20:00:21 2015 +0000
+
+    set swapfile max size
+
+commit c33b9855d31e23807678d66337ebae5f4ea5f019
+Author: root <root@mimosa-vm-7.jpl.nasa.gov>
+Date:   Wed Oct 21 00:09:20 2015 +0000
+
+    add ports for ES clustering
+
+commit 637025cf1795c4598cb8f3cc9939fbf46eac0498
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 19:00:34 2015 +0000
+
+    force install supervisor
+
+commit 6e04a6463fdcdefa48d90aef5775360de82952d9
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 18:28:39 2015 +0000
+
+    create run directory
+
+commit bd8da900ce08cf6b46c44c90bf2b7a1f5559da9c
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 18:10:45 2015 +0000
+
+    update formatting
+
+commit c7bdf64b46979c5fc276b3cd68bc15c5c060409b
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Oct 14 18:06:20 2015 +0000
+
+    use pip for development mode
+
+commit 757ef13065326c045c5c92df04791daae7dcd1b8
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 8 23:50:18 2015 +0000
+
+    fix
+
+commit 601ae6033c8c8c6d78848cc4fae39acab416f9c1
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 8 23:48:00 2015 +0000
+
+    update from git
+
+commit 7184af82aceb43950c6d61edeacf27f5992ef3d3
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 1 18:54:12 2015 +0000
+
+    include cloud_utils
+
+commit 3bac73a65d5c3df0b3fab88c3e94d122cde85532
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Oct 1 16:50:09 2015 +0000
+
+    update doc
+
+commit 8c441aa0361cf837a0d2e4ee05b86fcbebe07adc
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 29 23:20:33 2015 +0000
+
+    update
+
+commit 0371785bfdb8eb2c29c336fc760248de02c11ce6
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 29 15:40:27 2015 +0000
+
+    add timeout for swap file creation
+
+commit ce1104a814d26a00544aba90383dbae698fcd21a
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 25 00:10:37 2015 +0000
+
+    fix comment
+
+commit a555952f1564dca1ce0e436026b5f6235865f9fc
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 23:58:27 2015 +0000
+
+    overwrite autoindex and welcome httpd conf
+
+commit 42596bdc2c10b18e7897c56a33ea138d53620bc9
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 23:57:42 2015 +0000
+
+    secure httpd
+
+commit 1deed80caaa5ac69815f8d22a49b87d35806bdb5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 23:50:08 2015 +0000
+
+    move to templates
+
+commit db97327f8698db9041f9563058619954b4a763c4
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 23:29:37 2015 +0000
+
+    cleanup bash_profile
+
+commit f0f125a40a16e81539800c69817a9b7e641f4d3a
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 24 13:12:20 2015 +0000
+
+    yum update automatically
+
+commit b434e1228e7e5e440ca9e1e5594252ab6acfbcf8
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 22 18:48:55 2015 +0000
+
+    remove hard-coded PAT
+
+commit 55227254448867ef1772afddefbf8b3781e8b304
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Fri Sep 18 20:06:22 2015 +0000
+
+    updated read-only oauth token
+
+commit 26ada8c5803346ec3d96ebef05aa6876d9b37e26
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 20:13:48 2015 +0000
+
+    issue systemctl daemon-reload before service
+
+commit a0681a9b2ad1a7d18466d037a32a01fd8ce90d18
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 17:22:28 2015 +0000
+
+    move
+
+commit 6ed880837f55ebc7f7a4453d8adeddc3abb6ea6e
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 16:04:59 2015 +0000
+
+    fix push-button installation
+
+commit 3a03aef28d310e519d0edec502e3c5b68fef1360
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 15:55:30 2015 +0000
+
+    use oauth
+
+commit 51531f9a108b1ab23354407b0ac5345075789c34
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 15:26:51 2015 +0000
+
+    repo in hysds-org
+
+commit 83b3bd6a25b6f52501faa2f4cba6d76a8a995328
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 15:24:26 2015 +0000
+
+    set relocated repo
+
+commit 86f49ae1332ad92c1aefa72a61157c39dbff5977
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 15:09:58 2015 +0000
+
+    use git oauth token for code deployment
+
+commit 656c6c112d0fc58ec4942703a579e45ebe042c50
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 07:32:34 2015 +0000
+
+    open up elasticsearch and redis ports
+
+commit e1e32736de69bca694d2740da2aaac4cee1f403c
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 07:26:47 2015 +0000
+
+    write index.html
+
+commit 4be4904f71c720138cb9f453e7cdca10d921d978
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 07:22:02 2015 +0000
+
+    check puppet-firewalld is installed; set firewall rules
+
+commit e2b985077639680863712d5df9633411ccb6188b
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Thu Sep 17 06:06:41 2015 +0000
+
+    add services for httpd and firewalld
+
+commit b6bc760f5b2ffa7faaab28fbd7eff57525d6c8b9
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 16 21:03:29 2015 +0000
+
+    install HySDS-tuned redis RPM; install mailx
+
+commit 3e5eb454d610c74c320989b6775921c4aeffc4d1
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 16 17:44:02 2015 +0000
+
+    update for centos locations
+
+commit 8a62c7f8d289a627660841642e45eaef58607d20
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 16 17:05:02 2015 +0000
+
+    disable transparent hugepages for redis
+
+commit dbce91951037a0dbb110f2da627db5b95530f2b5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 16 16:01:12 2015 +0000
+
+    handle memory size properly; set ES_HEAP_SIZE properly
+
+commit 4a668dea9b69b88da1061d4413128b0a3c8927dc
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Wed Sep 16 15:02:46 2015 +0000
+
+    set java default; generalize
+
+commit 1db9a55845fb3d7a9bfa20c57c84f48cbcd48951
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Sep 15 21:51:58 2015 +0000
+
+    initial import
