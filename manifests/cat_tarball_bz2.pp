@@ -3,8 +3,8 @@ define grq::cat_tarball_bz2($pkg_tbz2=$title, $install_dir, $owner, $group, $cre
   # create the install directory
   file { "$install_dir":
     ensure  => directory,
-    owner   => $user,
-    group   => $group,
+    #owner   => $user,
+    #group   => $group,
     mode    => 0755,
   }
 
