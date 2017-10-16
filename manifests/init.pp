@@ -250,6 +250,7 @@ class grq {
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
+    provider   => init,
     require    => [
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
