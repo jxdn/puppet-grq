@@ -75,15 +75,6 @@ class grq {
 
 
   #####################################################
-  # add swap file 
-  #####################################################
-
-  swap { '/mnt/swapfile':
-    ensure   => present,
-  }
-
-
-  #####################################################
   # get sciflo directory
   #####################################################
 
@@ -101,7 +92,7 @@ class grq {
     unless  => "mysqladmin -u$mysql_user -p$mysql_password status",
     path    => ["/bin", "/usr/bin"],
     command => "mysqladmin -u$mysql_user password $mysql_password",
-    require => Service["mariadb"],
+    require => Exec["mariadb-start"],
   }
 
 
@@ -189,137 +180,6 @@ class grq {
                  Package[$jdk_pkg_name],
                  Exec['ldconfig']
                 ],
-  }
-
-
-
-  #####################################################
-  # get integer memory size in MB
-  #####################################################
-
-  if '.' in $::memorysize_mb {
-    $ms = split("$::memorysize_mb", '[.]')
-    $msize_mb = $ms[0]
-  }
-  else {
-    $msize_mb = $::memorysize_mb
-  }
-
-
-  #####################################################
-  # install elasticsearch
-  #####################################################
-
-  $es_heap_size = $msize_mb / 2
-
-  package { 'elasticsearch':
-    provider => rpm,
-    ensure   => present,
-    source   => "/etc/puppet/modules/grq/files/elasticsearch-1.7.3.noarch.rpm",
-    require  => Exec['set-java'],
-  }
-
-
-  file { '/etc/sysconfig/elasticsearch':
-    ensure       => file,
-    content      => template('grq/elasticsearch'),
-    mode         => 0644,
-    require      => Package['elasticsearch'],
-  }
-
-
-  file { '/etc/elasticsearch/elasticsearch.yml':
-    ensure       => file,
-    content      => template('grq/elasticsearch.yml'),
-    mode         => 0644,
-    require      => Package['elasticsearch'],
-  }
-
-
-  cat_tarball_bz2 { "elasticsearch-data.tbz2":
-    install_dir => "/var/lib",
-    creates     => "/var/lib/elasticsearch/products_cluster/nodes/0/indices/geonames",
-    owner       => "elasticsearch",
-    group       => "elasticsearch",
-    require     => Package['elasticsearch'],
-  }
-
-
-  service { 'elasticsearch':
-    ensure     => running,
-    enable     => true,
-    hasrestart => true,
-    hasstatus  => true,
-    provider   => init,
-    require    => [
-                   File['/etc/sysconfig/elasticsearch'],
-                   File['/etc/elasticsearch/elasticsearch.yml'],
-                   Cat_tarball_bz2['elasticsearch-data.tbz2'],
-                   Exec['daemon-reload'],
-                  ],
-  }
-
-
-  es_plugin { 'kopf':
-    path     => 'lmenezes/elasticsearch-kopf/1.2',
-    require  => Service['elasticsearch'],
-  }
-
-
-  es_plugin { 'head':
-    path     => 'mobz/elasticsearch-head',
-    require  => Service['elasticsearch'],
-  }
-
-
-  #####################################################
-  # disable transparent hugepages for redis
-  #####################################################
-
-  file { "/etc/tuned/no-thp":
-    ensure  => directory,
-    mode    => 0755,
-  }
-
-
-  file { "/etc/tuned/no-thp/tuned.conf":
-    ensure  => file,
-    content => template('grq/tuned.conf'),
-    mode    => 0644,
-    require => File["/etc/tuned/no-thp"],
-  }
-
-  
-  exec { "no-thp":
-    unless  => "grep -q -e '^no-thp$' /etc/tuned/active_profile",
-    path    => ["/sbin", "/bin", "/usr/bin"],
-    command => "tuned-adm profile no-thp",
-    require => File["/etc/tuned/no-thp/tuned.conf"],
-  }
-
-
-  #####################################################
-  # install redis
-  #####################################################
-
-  package { "redis":
-    provider => rpm,
-    ensure   => present,
-    source   => "/etc/puppet/modules/grq/files/redis-3.0.4-1.x86_64.rpm",
-    notify   => Exec['ldconfig'],
-    require => Exec["no-thp"],
-  }
-
-
-  service { 'redis':
-    ensure     => running,
-    enable     => true,
-    hasrestart => true,
-    hasstatus  => true,
-    require    => [
-                   Package['redis'],
-                   Exec['daemon-reload'],
-                  ],
   }
 
 
@@ -428,70 +288,6 @@ class grq {
     mode    => 0644,
     require => Package['httpd'],
   }
-
-
-  service { 'httpd':
-    ensure     => running,
-    enable     => true,
-    hasrestart => true,
-    hasstatus  => true,
-    require    => [
-                   File['/etc/httpd/conf.d/autoindex.conf'],
-                   File['/etc/httpd/conf.d/welcome.conf'],
-                   File['/etc/httpd/conf.d/ssl.conf'],
-                   File['/var/www/html/index.html'],
-                   Exec['daemon-reload'],
-                  ],
-  }
-
-
-  #####################################################
-  # firewalld config
-  #####################################################
-
-  firewalld::zone { 'public':
-    services => [ "ssh", "dhcpv6-client", "http", "https" ],
-    ports => [
-      {
-        # ElasticSearch
-        port     => "9200",
-        protocol => "tcp",
-      },
-      {
-        # ElasticSearch
-        port     => "9300",
-        protocol => "tcp",
-      },
-      {
-        # ElasticSearch
-        port     => "9300",
-        protocol => "udp",
-      },
-      {
-        # Redis
-        port     => "6379",
-        protocol => "tcp",
-      },
-      {
-        # GRQ (GeoRegionQuery) REST Service
-        port     => "8878",
-        protocol => "tcp",
-      },
-      {
-        # Tosca (Product FacetView) Web App
-        port     => "8879",
-        protocol => "tcp",
-      },
-    ]
-  }
-
-
-  #firewalld::service { 'dummy':
-  #  description	=> 'My dummy service',
-  #  ports       => [{port => '1234', protocol => 'tcp',},],
-  #  modules     => ['some_module_to_load'],
-  #  destination	=> {ipv4 => '224.0.0.251', ipv6 => 'ff02::fb'},
-  #}
 
 
 }
