@@ -220,6 +220,22 @@ class grq {
   }
 
 
+  file { "/etc/security/limits.d/99-elasticsearch.conf":
+    ensure       => file,
+    content      => template('grq/99-elasticsearch.conf'),
+    mode         => 0644,
+    require      => Package['elasticsearch'],
+  }
+
+
+  file { "/usr/lib/systemd/system/elasticsearch.service":
+    ensure       => file,
+    content      => template('grq/elasticsearch.service'),
+    mode         => 0644,
+    require      => Package['elasticsearch'],
+  }
+
+
   file { '/etc/sysconfig/elasticsearch':
     ensure       => file,
     content      => template('grq/elasticsearch'),
@@ -260,6 +276,8 @@ class grq {
     hasstatus  => true,
     provider   => init,
     require    => [
+                   File['/etc/security/limits.d/99-elasticsearch.conf'],
+                   File['/usr/lib/systemd/system/elasticsearch.service'],
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
                    File['/etc/elasticsearch/logging.yml'],
