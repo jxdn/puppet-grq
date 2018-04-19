@@ -236,6 +236,14 @@ class grq {
   }
 
 
+  file { '/etc/elasticsearch/logging.yml':
+    ensure       => file,
+    content      => template('grq/logging.yml'),
+    mode         => 0644,
+    require      => Package['elasticsearch'],
+  }
+
+
   cat_tarball_bz2 { "elasticsearch-data.tbz2":
     install_dir => "/var/lib",
     creates     => "/var/lib/elasticsearch/products_cluster/nodes/0/indices/geonames",
@@ -254,6 +262,7 @@ class grq {
     require    => [
                    File['/etc/sysconfig/elasticsearch'],
                    File['/etc/elasticsearch/elasticsearch.yml'],
+                   File['/etc/elasticsearch/logging.yml'],
                    Cat_tarball_bz2['elasticsearch-data.tbz2'],
                    Exec['daemon-reload'],
                   ],
