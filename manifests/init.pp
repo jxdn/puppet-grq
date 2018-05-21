@@ -143,6 +143,7 @@ class grq {
     'httpd': ensure => present;
     'httpd-devel': ensure => present;
     'mod_ssl': ensure => present;
+    'mod_evasive': ensure => present;
   }
 
 
@@ -457,6 +458,23 @@ class grq {
   }
 
 
+  file { "/var/log/mod_evasive":
+    ensure  => directory,
+    owner   => 'apache',
+    group   => 'apache',
+    mode    => 0755,
+    require => Package['httpd'],
+  }
+
+
+  file { "/etc/httpd/conf.d/mod_evasive.conf":
+    ensure  => present,
+    content => template('grq/mod_evasive.conf'),
+    mode    => 0644,
+    require => Package['httpd'],
+  }
+
+
   service { 'httpd':
     ensure     => running,
     enable     => true,
@@ -467,6 +485,8 @@ class grq {
                    File['/etc/httpd/conf.d/welcome.conf'],
                    File['/etc/httpd/conf.d/ssl.conf'],
                    File['/var/www/html/index.html'],
+                   File['/var/log/mod_evasive'],
+                   File['/etc/httpd/conf.d/mod_evasive.conf'],
                    Exec['daemon-reload'],
                   ],
   }
